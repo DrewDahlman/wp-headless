@@ -246,9 +246,6 @@ if( !class_exists("wpheadless") ){
 
 			// Create publish production
 			add_submenu_page('publish-site', 'Publish Production', 'Publish Production', 'edit_others_posts', 'publish-production', 'publish_production', 2);
-
-			// Check and create required fields
-			require("lib/settings-fields.php");
 		}
 
 		/*
@@ -282,9 +279,22 @@ if( !class_exists("wpheadless") ){
 			$headless->publish();
 		}
 
+		
+
+	}
+
+	/*
+	------------------------------------------
+	| loadFields:void (-)
+	|
+	| Load the settings fields
+	------------------------------------------ */
+	function loadFields(){
+		require("lib/settings-fields.php");
 	}
 
 	add_action('admin_menu', 'init');	
+	add_action('wp_loaded', 'loadFields');
 }
 
 ?>
