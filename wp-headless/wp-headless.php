@@ -135,12 +135,12 @@ if( !class_exists("wpheadless") ){
 			// Setup the post content holder
 			$content = array();
 
-			// Essentials
+			// Essentials and base wordpress details
 			foreach( $post as $post_field_key => $post_field_value ){
 				$content[$post_field_key] = $post_field_value;
 			}
 
-			// Loop fields
+			// Loop custom fields
 			if( get_fields( $post->ID ) ){
 				foreach( get_fields($post->ID) as $post_custom_field_key => $post_custom_field_value ){
 
@@ -210,7 +210,7 @@ if( !class_exists("wpheadless") ){
 
 		// Loop deps and error if required
 		foreach( $dependencies as $dependency ){
-			if( !is_plugin_active( $dependency["file"]) ){
+			if( !is_plugin_active( $dependency["file"] ) ){
 				if( $dependency['required'] ){
 					$class = "notice notice-error";
 					$message = "WP Headless requires " . $dependency["name"] . " <a href='" . $dependency["link"] . "'>Click to download</a>";
