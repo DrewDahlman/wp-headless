@@ -151,7 +151,7 @@ if( !class_exists("wpheadless") ){
 								if( gettype($post_related_value) == "object" ){
 									$content[$post_custom_field_key][$post_related_key] = $this->parsePost($post_related_value, array(), true);
 								} else {
-									$content[$post_custom_field_key][$post_related_key] = do_shortcode($post_related_value);
+									$content[$post_custom_field_key][$post_related_key] = $post_related_value;
 								}
 							}
 						}
@@ -160,11 +160,11 @@ if( !class_exists("wpheadless") ){
 						if( gettype($post_custom_field_value) == "object" ){
 							$content[$post_custom_field_key] = $this->parsePost($post_custom_field_value, array(), true);
 						} else {
-							$content[$post_custom_field_key] = do_shortcode($post_custom_field_value);
+							$content[$post_custom_field_key] = gettype($post_custom_field_value) == "string" ? do_shortcode($post_custom_field_value) : $post_custom_field_value;
 						}
 
 					} else {
-						$content[$post_custom_field_key] = do_shortcode($post_custom_field_value);
+						$content[$post_custom_field_key] = gettype($post_custom_field_value) == "string" ? do_shortcode($post_custom_field_value) : $post_custom_field_value;
 					}
 				}
 			}
