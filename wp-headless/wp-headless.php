@@ -137,7 +137,7 @@ if( !class_exists("wpheadless") ){
 
 			// Essentials and base wordpress details
 			foreach( $post as $post_field_key => $post_field_value ){
-				$content[$post_field_key] = $post_field_value;
+				$content[$post_field_key] = do_shortcode($post_field_value);
 			}
 
 			// Loop custom fields
@@ -151,7 +151,7 @@ if( !class_exists("wpheadless") ){
 								if( gettype($post_related_value) == "object" ){
 									$content[$post_custom_field_key][$post_related_key] = $this->parsePost($post_related_value, array(), true);
 								} else {
-									$content[$post_custom_field_key][$post_related_key] = $post_related_value;
+									$content[$post_custom_field_key][$post_related_key] = do_shortcode($post_related_value);
 								}
 							}
 						}
@@ -160,11 +160,11 @@ if( !class_exists("wpheadless") ){
 						if( gettype($post_custom_field_value) == "object" ){
 							$content[$post_custom_field_key] = $this->parsePost($post_custom_field_value, array(), true);
 						} else {
-							$content[$post_custom_field_key] = $post_custom_field_value;
+							$content[$post_custom_field_key] = do_shortcode($post_custom_field_value);
 						}
 
 					} else {
-						$content[$post_custom_field_key] = $post_custom_field_value;
+						$content[$post_custom_field_key] = do_shortcode($post_custom_field_value);
 					}
 				}
 			}
