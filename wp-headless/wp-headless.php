@@ -104,7 +104,7 @@ if( !class_exists("wpheadless") ){
 						include("views/error.php");
 					}
 				} else {
-					$local_path = $_SERVER['HTTP_HOST'] . $this->settings["tmp_dir"] . $file_name;
+					$local_path = get_template_directory_uri() . "/data" . "/" . $file_name;
 					include("views/success-local.php");
 				}
 			}
