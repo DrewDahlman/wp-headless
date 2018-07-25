@@ -17,6 +17,14 @@
 			$this->settings["file_url"] = "http://". $this->settings["bucket"] . ".s3.amazonaws.com/" . $this->settings["file_name"];
 		}
 
+		function canUpload(){
+			if( $this->settings["awsAccessKey"] != "" ){
+				return true;
+			} else {
+				return false;
+			}
+		}
+
 		function upload(){
 			$s3 = new S3(
 				$this->settings["awsAccessKey"],
