@@ -174,7 +174,7 @@ if( !class_exists("wpheadless") ){
 				}
 			}
 
-			return $content;
+			return apply_filters( 'wp_headless_parse_post', $content, $post, $nested );
 		}
 
 	}
